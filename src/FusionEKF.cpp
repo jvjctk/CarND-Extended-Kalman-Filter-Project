@@ -42,8 +42,19 @@ FusionEKF::FusionEKF() {
 
   // State covariance matrix
   MatrixXd P_(4, 4);
-  // State transition function
+
+  P_ <<  1, 0, 0, 0, 
+         0, 1, 0, 0,
+         0, 0, 1000, 0,
+         0, 0, 0, 1000;
+  
+// State transition function
   MatrixXd F_(4, 4);
+
+  F_ <<  1, 0, 1, 0,
+         0, 1, 0, 1,
+         0, 0, 1, 0,
+         0, 0, 0, 1;
   // Process noise covariance matrix
   MatrixXd Q_(4, 4);
   // State vector
